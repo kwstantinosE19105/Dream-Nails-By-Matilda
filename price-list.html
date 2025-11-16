@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Τιμοκατάλογος - Dream Nails By Matilda</title>
+  <link rel="icon" type="image/jpeg" href="Logo.jpeg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== HERO SECTION ===== -->
+  <header class="hero small-hero">
+    <div class="hero-content">
+      <h1>💖 Τιμοκατάλογος</h1>
+      <p>Ανακαλύψτε τις υπηρεσίες μας και επιλέξτε αυτό που σας ταιριάζει!</p>
+      <div class="hero-buttons">
+        <a href="index.html" class="btn-secondary">🏠 Αρχική</a>
+        <a href="book-appointment.html" class="btn-primary">📅 Κλείστε Ραντεβού</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PRICE LIST ===== -->
+  <main class="container">
+
+    <h2>💅 ΜΑΝΙΚΙΟΥΡ</h2>
+    <table class="price-table">
+      <tr><td>Μανικιούρ Απλό</td><td>14€</td></tr>
+      <tr><td>Ημιμόνιμο Μανικιούρ</td><td>17€</td></tr>
+      <tr><td>Γαλλικό Ημιμόνιμο</td><td>18€</td></tr>
+      <tr><td>Ενισχυμένο</td><td>20€</td></tr>
+      <tr><td>Αφαίρεση Ημιμόνιμου</td><td>5€</td></tr>
+      <tr><td>Spa</td><td>+6€</td></tr>
+    </table>
+
+    <h2>🦶 ΠΕΝΤΙΚΙΟΥΡ</h2>
+    <table class="price-table">
+      <tr><td>Απλό</td><td>18€</td></tr>
+      <tr><td>Περιποίηση</td><td>16€</td></tr>
+      <tr><td>Ημιμόνιμο</td><td>22€</td></tr>
+      <tr><td>Θεραπευτικό</td><td>25€</td></tr>
+      <tr><td>Spa</td><td>+6€</td></tr>
+    </table>
+
+    <h2>💎 ΤΕΧΝΗΤΑ ΝΥΧΙΑ/ GEL</h2>
+    <table class="price-table">
+      <tr><td>Φυσική ενίσχυση Acrylic / Gel Νύχια</td><td>από 25€</td></tr>
+      <tr><td>Τοποθέτηση Acrylic / Gel Νύχια</td><td>40€</td></tr>
+      <tr><td>Συντήρηση Gel</td><td>30€</td></tr>
+      <tr><td>Τεχνητά για έφηβες</td><td>30€</td></tr>
+      <tr><td>Αφαίρεση Τεχνητών</td><td>10€</td></tr>
+   
+    </table>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Dream Nails By Matilda. Όλα τα δικαιώματα διατηρούνται.</p>
+    <p>
+      Κατασκευή Ιστοσελίδας από <a href="#">Dream Web Design</a> |
+      <a href="#">Όροι Χρήσης</a> | <a href="#">Πολιτική Απορρήτου</a>
+    </p>
+  </footer>
+
+  <script>
+    // Simple fade-in on scroll, just for this page
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section, header, footer, .container').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
