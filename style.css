@@ -39,7 +39,7 @@ body {
 ==================================== */
 @keyframes neonPulse {
   from {
-    opacity: 0.7;
+    opacity: 0.75;
     filter: brightness(1);
   }
   to {
@@ -96,22 +96,18 @@ main {
   );
   color: #4a044e;
   text-align: center;
-  padding: 120px 20px;
+  padding: 110px 20px 90px;
   border-bottom: 3px solid #ec4899;
 }
 
-.small-hero {
-  padding: 80px 20px;
-}
-
 .hero-content {
-  max-width: 850px;
+  max-width: 1000px;
   margin: 0 auto;
   animation: fadeInUp 0.8s ease;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 700;
   margin-bottom: 15px;
   color: #831843;
@@ -119,13 +115,25 @@ main {
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 30px;
   color: #581c87;
 }
 
 /* ====================================
-   7. HERO LOGO
+   7. HERO LOGO WRAPPER
+==================================== */
+.hero-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  margin: 0 auto 30px;
+}
+
+/* ====================================
+   8. HERO LOGO
 ==================================== */
 .hero-logo {
   width: 220px;
@@ -133,27 +141,31 @@ main {
   display: block;
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid rgba(255, 255, 255, 0.85);
+  border: 5px solid rgba(255, 255, 255, 0.9);
   background: white;
   padding: 8px;
-  box-shadow: 0 0 25px rgba(255, 0, 200, 0.25);
+  box-shadow: 0 0 30px rgba(255, 0, 200, 0.22);
+  flex-shrink: 0;
 }
 
-
 /* ====================================
-   8. NEON STRIPES
+   9. NEON STRIPES
 ==================================== */
 .neon-stripe {
-  width: 120px;
-  height: 6px;
-  border-radius: 10px;
+  width: 150px;
+  height: 8px;
+  border-radius: 999px;
   background: linear-gradient(90deg, #ff00c8, #ff77e9, #ff00c8);
-  box-shadow: 0 0 20px #ff00c8, 0 0 40px #ff77e9, 0 0 60px #ff00c8;
+  box-shadow:
+    0 0 10px #ff00c8,
+    0 0 20px #ff33d6,
+    0 0 35px #ff77e9;
   animation: neonPulse 2s infinite alternate;
+  flex-shrink: 0;
 }
 
 /* ====================================
-   9. BUTTONS
+   10. BUTTONS
 ==================================== */
 .hero-buttons {
   display: flex;
@@ -196,112 +208,7 @@ main {
 }
 
 /* ====================================
-   10. ABOUT SECTION
-==================================== */
-.about {
-  max-width: 900px;
-  margin: 60px auto;
-  text-align: center;
-  padding: 40px 24px;
-}
-
-.about h2 {
-  font-size: 2rem;
-  color: #db2777;
-  margin-bottom: 15px;
-}
-
-.about p {
-  font-size: 1.05rem;
-  color: #444;
-}
-
-/* ====================================
-   11. SERVICES SECTION
-==================================== */
-.services {
-  text-align: center;
-  padding: 60px 20px;
-  margin: 30px auto;
-  max-width: 1200px;
-}
-
-.services h2 {
-  font-size: 2rem;
-  color: #7e22ce;
-  margin-bottom: 40px;
-  font-style: italic;
-  font-weight: 500;
-}
-
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-/* ====================================
-   12. SERVICE CARD
-==================================== */
-.service-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.service-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-  border-color: #e11d48;
-}
-
-.service-card img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.service-card:hover img {
-  transform: scale(1.08);
-}
-
-/* ====================================
-   13. SERVICE OVERLAY
-==================================== */
-.overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.5);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.service-card:hover .overlay {
-  opacity: 1;
-}
-
-.overlay h3 {
-  font-size: 1.4rem;
-  color: #991b1b;
-  border: 2px solid #991b1b;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 8px;
-  text-shadow: 0 1px 2px white;
-}
-
-/* ====================================
-   14. GALLERY SECTION
+   11. GALLERY SECTION
 ==================================== */
 .gallery-section {
   text-align: center;
@@ -346,7 +253,7 @@ main {
 }
 
 /* ====================================
-   15. GALLERY BUTTONS
+   12. GALLERY BUTTONS
 ==================================== */
 .gallery-btn {
   position: absolute;
@@ -377,7 +284,112 @@ main {
 }
 
 /* ====================================
-   16. CONTACT SECTION
+   13. ABOUT SECTION
+==================================== */
+.about {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.about h2 {
+  font-size: 2rem;
+  color: #db2777;
+  margin-bottom: 15px;
+}
+
+.about p {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+/* ====================================
+   14. SERVICES SECTION
+==================================== */
+.services {
+  text-align: center;
+  padding: 60px 20px;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+
+.services h2 {
+  font-size: 2rem;
+  color: #7e22ce;
+  margin-bottom: 40px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ====================================
+   15. SERVICE CARD
+==================================== */
+.service-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.service-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  border-color: #e11d48;
+}
+
+.service-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.08);
+}
+
+/* ====================================
+   16. SERVICE OVERLAY
+==================================== */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h3 {
+  font-size: 1.4rem;
+  color: #991b1b;
+  border: 2px solid #991b1b;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  text-shadow: 0 1px 2px white;
+}
+
+/* ====================================
+   17. CONTACT SECTION
 ==================================== */
 .contact-section {
   padding: 50px 20px;
@@ -401,7 +413,7 @@ main {
 }
 
 /* ====================================
-   17. CONTACT INFO
+   18. CONTACT INFO
 ==================================== */
 .contact-info h3 {
   color: #6d28d9;
@@ -441,7 +453,7 @@ main {
 }
 
 /* ====================================
-   18. CONTACT MAP
+   19. CONTACT MAP
 ==================================== */
 .contact-map iframe {
   border-radius: 10px;
@@ -450,7 +462,7 @@ main {
 }
 
 /* ====================================
-   19. CONTACT SOCIAL
+   20. CONTACT SOCIAL
 ==================================== */
 .contact-social {
   text-align: center;
@@ -480,145 +492,7 @@ main {
 }
 
 /* ====================================
-   20. PRICE LIST PAGE
-==================================== */
-.price-page {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 20px;
-}
-
-.price-card {
-  padding: 40px 30px;
-  border-radius: 24px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* ====================================
-   21. PRICE CATEGORY
-==================================== */
-.price-category {
-  margin-bottom: 45px;
-}
-
-.price-category:last-child {
-  margin-bottom: 0;
-}
-
-.price-category h2 {
-  font-size: 2rem;
-  color: #2f2f2f;
-  margin-bottom: 20px;
-  font-weight: 800;
-  text-align: left;
-}
-
-/* ====================================
-   22. PRICE ROW
-==================================== */
-.price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* ====================================
-   23. SERVICE NAME
-==================================== */
-.service-name {
-  flex: 1;
-  min-width: 0;
-  font-size: 1.15rem;
-  color: #444;
-  font-weight: 500;
-  line-height: 1.5;
-  text-align: left;
-}
-
-/* ====================================
-   24. SERVICE PRICE
-==================================== */
-.service-price {
-  min-width: 80px;
-  margin-left: auto;
-  font-size: 1.15rem;
-  color: #db2777;
-  font-weight: 700;
-  text-align: right;
-  white-space: nowrap;
-}
-
-/* ====================================
-   25. CONTAINER / TABLE
-==================================== */
-.container {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 20px;
-}
-
-.price-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 40px;
-}
-
-.price-table td {
-  border-bottom: 1px solid #f3f4f6;
-  padding: 10px;
-}
-
-.price-table td:last-child {
-  text-align: right;
-  color: #ec4899;
-  font-weight: 600;
-}
-
-.container h2 {
-  color: #7e22ce;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #f9a8d4;
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
-/* ====================================
-   26. BOOKING PAGE
-==================================== */
-.booking-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.booking-section {
-  text-align: center;
-  padding: 30px;
-  border-radius: 16px;
-}
-
-.booking-section h2 {
-  font-size: 2rem;
-  margin-bottom: 25px;
-  color: #d85fa8;
-  font-weight: 700;
-}
-
-.booking-section iframe {
-  width: 100%;
-  height: 800px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* ====================================
-   27. FOOTER
+   21. FOOTER
 ==================================== */
 footer {
   text-align: center;
@@ -640,15 +514,29 @@ footer a:hover {
 }
 
 /* ====================================
-   28. RESPONSIVE TABLET
+   22. RESPONSIVE TABLET
 ==================================== */
 @media (max-width: 768px) {
   .hero {
-    padding: 90px 20px;
+    padding: 90px 20px 70px;
   }
 
   .hero h1 {
     font-size: 2.4rem;
+  }
+
+  .hero-logo-wrapper {
+    gap: 16px;
+  }
+
+  .hero-logo {
+    width: 170px;
+    height: 170px;
+  }
+
+  .neon-stripe {
+    width: 80px;
+    height: 6px;
   }
 
   .gallery-wrapper {
@@ -660,51 +548,21 @@ footer a:hover {
     padding: 10px;
   }
 
-  .booking-section {
-    padding: 20px;
-  }
-
-  .booking-section h2 {
-    font-size: 1.6rem;
-  }
-
-  .booking-section iframe {
-    height: 650px;
-  }
-
-  .price-card {
-    padding: 24px 18px;
-    border-radius: 18px;
-  }
-
-  .price-category h2 {
-    font-size: 1.5rem;
-  }
-
-  .price-row {
-    gap: 12px;
-  }
-
-  .service-name {
-    font-size: 1rem;
-  }
-
-  .service-price {
-    min-width: 60px;
-    font-size: 1rem;
+  .service-card img {
+    height: 300px;
   }
 }
 
 /* ====================================
-   29. RESPONSIVE MOBILE
+   23. RESPONSIVE MOBILE
 ==================================== */
 @media (max-width: 600px) {
   .hero {
-    padding: 80px 20px;
+    padding: 80px 20px 60px;
   }
 
   .hero h1 {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
 
   .hero p {
@@ -712,15 +570,18 @@ footer a:hover {
   }
 
   .hero-logo-wrapper {
-    gap: 12px;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .hero-logo {
-    width: 130px;
+    width: 150px;
+    height: 150px;
   }
 
   .neon-stripe {
-    width: 60px;
+    width: 100px;
+    height: 6px;
   }
 
   .contact-grid {
@@ -740,30 +601,9 @@ footer a:hover {
 }
 
 /* ====================================
-   30. RESPONSIVE SMALL MOBILE
+   24. SMALL MOBILE
 ==================================== */
 @media (max-width: 480px) {
-  .price-page {
-    padding: 12px;
-  }
-
-  .price-card {
-    padding: 18px 14px;
-  }
-
-  .price-category h2 {
-    font-size: 1.3rem;
-  }
-
-  .service-name {
-    font-size: 0.95rem;
-  }
-
-  .service-price {
-    min-width: 55px;
-    font-size: 0.95rem;
-  }
-
   .btn-primary,
   .btn-secondary {
     width: 100%;
