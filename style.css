@@ -16,9 +16,8 @@ body {
   background-size: cover;
   color: #333;
   line-height: 1.6;
-  opacity: 0;
-  animation: globalFadeIn 1.2s ease-out forwards;
   position: relative;
+  min-height: 100vh;
 }
 
 /* ====================================
@@ -36,17 +35,8 @@ body {
 }
 
 /* ====================================
-   4. GLOBAL ANIMATIONS
+   4. ANIMATIONS
 ==================================== */
-@keyframes globalFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes neonPulse {
   from {
     opacity: 0.7;
@@ -54,14 +44,14 @@ body {
   }
   to {
     opacity: 1;
-    filter: brightness(1.5);
+    filter: brightness(1.4);
   }
 }
 
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -70,21 +60,44 @@ body {
 }
 
 /* ====================================
-   5. HERO SECTION
+   5. GLOBAL SECTIONS
+==================================== */
+section,
+header,
+footer,
+main {
+  opacity: 1;
+  transform: none;
+}
+
+.about,
+.services,
+.gallery-section,
+.contact-section,
+.container,
+.booking-section,
+.price-card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ====================================
+   6. HERO SECTION
 ==================================== */
 .hero {
   background: linear-gradient(
     135deg,
-    rgba(255, 198, 218, 0.75),
-    rgba(249, 168, 212, 0.75),
-    rgba(240, 171, 252, 0.75)
+    rgba(255, 198, 218, 0.78),
+    rgba(249, 168, 212, 0.78),
+    rgba(240, 171, 252, 0.78)
   );
   color: #4a044e;
   text-align: center;
   padding: 120px 20px;
   border-bottom: 3px solid #ec4899;
-  backdrop-filter: blur(4px);
-  animation: fadeIn 1.5s ease-in-out;
 }
 
 .small-hero {
@@ -92,8 +105,9 @@ body {
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
+  animation: fadeInUp 0.8s ease;
 }
 
 .hero h1 {
@@ -111,7 +125,7 @@ body {
 }
 
 /* ====================================
-   6. HERO LOGO
+   7. HERO LOGO
 ==================================== */
 .hero-logo-wrapper {
   display: flex;
@@ -119,7 +133,6 @@ body {
   justify-content: center;
   gap: 25px;
   margin-bottom: 25px;
-  background: transparent;
 }
 
 .hero-logo {
@@ -128,12 +141,11 @@ body {
   display: block;
   background: transparent;
   border: none;
-  box-shadow: 0 0 25px rgba(255, 0, 200, 0.25);
-  z-index: 1;
+  box-shadow: 0 0 25px rgba(255, 0, 200, 0.22);
 }
 
 /* ====================================
-   7. NEON STRIPES
+   8. NEON STRIPES
 ==================================== */
 .neon-stripe {
   width: 120px;
@@ -145,7 +157,7 @@ body {
 }
 
 /* ====================================
-   8. BUTTONS
+   9. BUTTONS
 ==================================== */
 .hero-buttons {
   display: flex;
@@ -162,12 +174,13 @@ body {
   padding: 12px 24px;
   font-size: 1rem;
   transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .btn-primary {
   background: linear-gradient(135deg, #ec4899, #f472b6);
   color: white;
-  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.35);
 }
 
 .btn-primary:hover {
@@ -176,7 +189,7 @@ body {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: #db2777;
   border: 2px solid #f9a8d4;
 }
@@ -187,31 +200,13 @@ body {
 }
 
 /* ====================================
-   9. GLASS SECTIONS
-==================================== */
-.about,
-.services,
-.container,
-.booking-section,
-.contact-section,
-.gallery-section,
-.price-card {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 18px;
-  padding: 40px 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin: 30px auto;
-  max-width: 1200px;
-}
-
-/* ====================================
    10. ABOUT SECTION
 ==================================== */
 .about {
   max-width: 900px;
+  margin: 60px auto;
   text-align: center;
+  padding: 40px 24px;
 }
 
 .about h2 {
@@ -230,6 +225,9 @@ body {
 ==================================== */
 .services {
   text-align: center;
+  padding: 60px 20px;
+  margin: 30px auto;
+  max-width: 1200px;
 }
 
 .services h2 {
@@ -244,13 +242,12 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  justify-content: center;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 /* ====================================
-   12. SERVICE CARDS
+   12. SERVICE CARD
 ==================================== */
 .service-card {
   position: relative;
@@ -263,7 +260,7 @@ body {
 
 .service-card:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
   border-color: #e11d48;
 }
 
@@ -276,11 +273,11 @@ body {
 }
 
 .service-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 /* ====================================
-   13. SERVICE CARD OVERLAY
+   13. SERVICE OVERLAY
 ==================================== */
 .overlay {
   position: absolute;
@@ -302,8 +299,8 @@ body {
   color: #991b1b;
   border: 2px solid #991b1b;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
   text-shadow: 0 1px 2px white;
 }
 
@@ -312,6 +309,9 @@ body {
 ==================================== */
 .gallery-section {
   text-align: center;
+  padding: 50px 20px;
+  margin: 30px auto;
+  max-width: 1200px;
 }
 
 .gallery-section h2 {
@@ -323,7 +323,6 @@ body {
 .gallery-container {
   position: relative;
   width: 100%;
-  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -357,7 +356,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   border: none;
   font-size: 2rem;
   cursor: pointer;
@@ -384,6 +383,12 @@ body {
 /* ====================================
    16. CONTACT SECTION
 ==================================== */
+.contact-section {
+  padding: 50px 20px;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+
 .contact-section h2 {
   text-align: center;
   color: #7e22ce;
@@ -488,11 +493,8 @@ body {
 }
 
 .price-card {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 24px;
   padding: 40px 30px;
+  border-radius: 24px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -555,7 +557,42 @@ body {
 }
 
 /* ====================================
-   25. BOOKING PAGE
+   25. CONTAINER / TABLE
+==================================== */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.price-table td {
+  border-bottom: 1px solid #f3f4f6;
+  padding: 10px;
+}
+
+.price-table td:last-child {
+  text-align: right;
+  color: #ec4899;
+  font-weight: 600;
+}
+
+.container h2 {
+  color: #7e22ce;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #f9a8d4;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* ====================================
+   26. BOOKING PAGE
 ==================================== */
 .booking-main {
   max-width: 900px;
@@ -564,10 +601,9 @@ body {
 }
 
 .booking-section {
-  background: rgba(255, 255, 255, 0.82);
-  border-radius: 16px;
   text-align: center;
-  animation: fadeIn 0.6s ease-in-out forwards;
+  padding: 30px;
+  border-radius: 16px;
 }
 
 .booking-section h2 {
@@ -586,7 +622,7 @@ body {
 }
 
 /* ====================================
-   26. FOOTER
+   27. FOOTER
 ==================================== */
 footer {
   text-align: center;
@@ -608,33 +644,17 @@ footer a:hover {
 }
 
 /* ====================================
-   27. FADE-IN ON SCROLL
-==================================== */
-section,
-header,
-footer {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-  will-change: opacity, transform;
-}
-
-.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-section.visible,
-header.visible,
-footer.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ====================================
-   28. TABLET RESPONSIVE
+   28. RESPONSIVE TABLET
 ==================================== */
 @media (max-width: 768px) {
+  .hero {
+    padding: 90px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
   .gallery-wrapper {
     height: 50vh;
   }
@@ -680,7 +700,7 @@ footer.visible {
 }
 
 /* ====================================
-   29. MOBILE RESPONSIVE
+   29. RESPONSIVE MOBILE
 ==================================== */
 @media (max-width: 600px) {
   .hero {
@@ -688,7 +708,7 @@ footer.visible {
   }
 
   .hero h1 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
   }
 
   .hero p {
@@ -717,10 +737,14 @@ footer.visible {
   .contact-social {
     margin-bottom: 20px;
   }
+
+  .service-card img {
+    height: 280px;
+  }
 }
 
 /* ====================================
-   30. SMALL MOBILE RESPONSIVE
+   30. RESPONSIVE SMALL MOBILE
 ==================================== */
 @media (max-width: 480px) {
   .price-page {
@@ -742,5 +766,11 @@ footer.visible {
   .service-price {
     min-width: 55px;
     font-size: 0.95rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
   }
 }
