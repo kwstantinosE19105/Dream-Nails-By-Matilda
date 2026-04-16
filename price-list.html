@@ -1,16 +1,42 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="el">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Τιμοκατάλογος | Dream Nails By Matilda</title>
-  <link rel="icon" type="image/jpeg" href="Logo.jpeg">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="inner-page">
 
-  <header class="hero small-hero">
+  <div class="background-blobs">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="background-overlay"></div>
+  <div class="scroll-progress"></div>
+
+  <nav class="topbar">
+    <a href="index.html" class="brand">
+      <img src="images/logo.jpg" alt="Dream Nails logo">
+      <span>Dream Nails By Matilda</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Αρχική</a>
+      <a href="book-appointment.html" class="nav-cta">Ραντεβού</a>
+    </div>
+    <button class="menu-toggle" aria-label="Άνοιγμα μενού">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+
+  <header class="hero small-hero reveal">
     <div class="hero-content">
+      <div class="hero-badge">Price List</div>
       <h1>💖 Τιμοκατάλογος</h1>
       <p>Δείτε όλες τις υπηρεσίες και τις τιμές μας</p>
 
@@ -21,109 +47,49 @@
     </div>
   </header>
 
-  <main class="price-page">
-    <section class="price-card">
-
-      <div class="price-category">
-        <h2>💅 ΜΑΝΙΚΙΟΥΡ</h2>
-
-        <div class="price-row">
-          <div class="service-name">Μανικιούρ Απλό</div>
-          <div class="service-price">14€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Ημιμόνιμο Μανικιούρ</div>
-          <div class="service-price">17€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Γαλλικό Ημιμόνιμο</div>
-          <div class="service-price">18€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Ενισχυμένο</div>
-          <div class="service-price">20€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Αφαίρεση Ημιμόνιμου</div>
-          <div class="service-price">5€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Spa</div>
-          <div class="service-price">+6€</div>
-        </div>
+  <main class="price-page reveal">
+    <section class="price-card glass-card">
+      <div class="section-heading centered-left">
+        <span class="section-tag">Prices</span>
+        <h2>Οι υπηρεσίες μας</h2>
       </div>
 
-      <div class="price-category">
-        <h2>🦶 ΠΕΝΤΙΚΙΟΥΡ</h2>
-
-        <div class="price-row">
-          <div class="service-name">Απλό</div>
-          <div class="service-price">18€</div>
+      <div class="price-grid">
+        <div class="price-category">
+          <h2>💅 ΜΑΝΙΚΙΟΥΡ</h2>
+          <div class="price-row"><div class="service-name">Μανικιούρ Απλό</div><div class="service-price">14€</div></div>
+          <div class="price-row"><div class="service-name">Ημιμόνιμο Μανικιούρ</div><div class="service-price">17€</div></div>
+          <div class="price-row"><div class="service-name">Γαλλικό Ημιμόνιμο</div><div class="service-price">18€</div></div>
+          <div class="price-row"><div class="service-name">Ενισχυμένο</div><div class="service-price">20€</div></div>
+          <div class="price-row"><div class="service-name">Αφαίρεση Ημιμόνιμου</div><div class="service-price">5€</div></div>
+          <div class="price-row"><div class="service-name">Spa</div><div class="service-price">+6€</div></div>
         </div>
 
-        <div class="price-row">
-          <div class="service-name">Περιποίηση</div>
-          <div class="service-price">16€</div>
+        <div class="price-category">
+          <h2>🦶 ΠΕΝΤΙΚΙΟΥΡ</h2>
+          <div class="price-row"><div class="service-name">Απλό</div><div class="service-price">18€</div></div>
+          <div class="price-row"><div class="service-name">Περιποίηση</div><div class="service-price">16€</div></div>
+          <div class="price-row"><div class="service-name">Ημιμόνιμο</div><div class="service-price">22€</div></div>
+          <div class="price-row"><div class="service-name">Θεραπευτικό</div><div class="service-price">25€</div></div>
+          <div class="price-row"><div class="service-name">Spa</div><div class="service-price">+6€</div></div>
         </div>
 
-        <div class="price-row">
-          <div class="service-name">Ημιμόνιμο</div>
-          <div class="service-price">22€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Θεραπευτικό</div>
-          <div class="service-price">25€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Spa</div>
-          <div class="service-price">+6€</div>
-        </div>
-      </div>
-
-      <div class="price-category">
-        <h2>💎 ΤΕΧΝΗΤΑ ΝΥΧΙΑ / GEL</h2>
-
-        <div class="price-row">
-          <div class="service-name">Φυσική ενίσχυση Acrylic / Gel Νύχια από</div>
-          <div class="service-price">25€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Τοποθέτηση Acrylic / Gel Νύχια</div>
-          <div class="service-price">40€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Συντήρηση Gel</div>
-          <div class="service-price">30€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Τεχνητά για έφηβες</div>
-          <div class="service-price">30€</div>
-        </div>
-
-        <div class="price-row">
-          <div class="service-name">Αφαίρεση Τεχνητών</div>
-          <div class="service-price">10€</div>
+        <div class="price-category">
+          <h2>💎 ΤΕΧΝΗΤΑ ΝΥΧΙΑ / GEL</h2>
+          <div class="price-row"><div class="service-name">Φυσική ενίσχυση Acrylic / Gel Νύχια από</div><div class="service-price">25€</div></div>
+          <div class="price-row"><div class="service-name">Τοποθέτηση Acrylic / Gel Νύχια</div><div class="service-price">40€</div></div>
+          <div class="price-row"><div class="service-name">Συντήρηση Gel</div><div class="service-price">30€</div></div>
+          <div class="price-row"><div class="service-name">Τεχνητά για έφηβες</div><div class="service-price">30€</div></div>
+          <div class="price-row"><div class="service-name">Αφαίρεση Τεχνητών</div><div class="service-price">10€</div></div>
         </div>
       </div>
-
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Dream Nails By Matilda. Όλα τα δικαιώματα διατηρούνται.</p>
+  <footer class="reveal">
+    <p>© 2026 Dream Nails By Matilda. Όλα τα δικαιώματα διατηρούνται.</p>
   </footer>
 
-  <div class="background-overlay"></div>
-
+  <script src="script.js"></script>
 </body>
 </html>
