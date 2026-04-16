@@ -1,239 +1,442 @@
-/* ====================================
-   1. RESET
-==================================== */
+:root {
+  --bg: #fff7fb;
+  --text: #3a2347;
+  --text-soft: #6b5b76;
+  --white: rgba(255, 255, 255, 0.72);
+  --white-strong: rgba(255, 255, 255, 0.9);
+  --border: rgba(255, 255, 255, 0.45);
+  --pink: #ec4899;
+  --pink-strong: #db2777;
+  --purple: #9333ea;
+  --purple-dark: #6b21a8;
+  --shadow: 0 20px 60px rgba(154, 63, 133, 0.16);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 14px;
+  --container: 1200px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ====================================
-   2. BODY
-==================================== */
-body {
-  font-family: "Poppins", sans-serif;
-  background: url("images/backround.png") repeat center center fixed;
-  background-size: cover;
-  color: #333;
-  line-height: 1.6;
-  position: relative;
-  min-height: 100vh;
+html {
+  scroll-behavior: smooth;
 }
 
-/* ====================================
-   3. BACKGROUND OVERLAY
-==================================== */
+body {
+  font-family: "Poppins", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 192, 203, 0.35), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(196, 181, 253, 0.35), transparent 30%),
+    url("images/backround.png") center center / cover fixed;
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
 .background-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.35), rgba(255,255,255,0.15));
+  pointer-events: none;
+  z-index: -2;
+}
+
+.background-blobs {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -3;
+  pointer-events: none;
+}
+
+.background-blobs span {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  animation: floatBlob 16s ease-in-out infinite alternate;
+}
+
+.background-blobs span:nth-child(1) {
+  background: #f9a8d4;
+  top: -40px;
+  left: -80px;
+}
+
+.background-blobs span:nth-child(2) {
+  background: #c4b5fd;
+  top: 30%;
+  right: -80px;
+  animation-delay: 1s;
+}
+
+.background-blobs span:nth-child(3) {
+  background: #f0abfc;
+  bottom: -80px;
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(236,72,153,0.18), transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.35);
-  pointer-events: none;
-  z-index: -1;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  z-index: 9999;
 }
 
-/* ====================================
-   4. ANIMATIONS
-==================================== */
-@keyframes neonPulse {
-  from {
-    opacity: 0.75;
-    filter: brightness(1);
-  }
-  to {
-    opacity: 1;
-    filter: brightness(1.4);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ====================================
-   5. GLOBAL SECTIONS
-==================================== */
-section,
-header,
-footer,
-main {
-  opacity: 1;
-  transform: none;
-}
-
+.glass-card,
 .about,
 .services,
 .gallery-section,
 .contact-section,
-.container,
-.booking-section,
-.price-card {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 18px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+.price-card,
+.booking-panel {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 
-/* ====================================
-   6. HERO SECTION
-==================================== */
+.topbar {
+  position: sticky;
+  top: 16px;
+  z-index: 1000;
+  max-width: calc(var(--container) + 40px);
+  margin: 16px auto 0;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.brand img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.85);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--text);
+  transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--pink-strong);
+}
+
+.nav-cta {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--pink), #f472b6);
+  color: white !important;
+  box-shadow: 0 12px 24px rgba(236,72,153,0.24);
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+}
+
 .hero {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 198, 218, 0.78),
-    rgba(249, 168, 212, 0.78),
-    rgba(240, 171, 252, 0.78)
-  );
-  color: #4a044e;
+  max-width: var(--container);
+  margin: 28px auto 0;
+  padding: 110px 26px 90px;
   text-align: center;
-  padding: 110px 20px 90px;
-  border-bottom: 3px solid #ec4899;
+  position: relative;
+  overflow: hidden;
+  border-radius: 36px;
+  background:
+    linear-gradient(135deg, rgba(255, 224, 233, 0.76), rgba(249, 168, 212, 0.55), rgba(221, 214, 254, 0.56));
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: var(--shadow);
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.4;
+}
+
+.hero::before {
+  width: 240px;
+  height: 240px;
+  background: rgba(236,72,153,0.35);
+  top: -80px;
+  left: -60px;
+}
+
+.hero::after {
+  width: 300px;
+  height: 300px;
+  background: rgba(147,51,234,0.22);
+  right: -100px;
+  bottom: -100px;
+}
+
+.small-hero {
+  padding: 90px 26px 70px;
 }
 
 .hero-content {
-  max-width: 1000px;
+  max-width: 980px;
   margin: 0 auto;
-  animation: fadeInUp 0.8s ease;
+  position: relative;
+  z-index: 1;
 }
 
-.hero h1 {
-  font-size: 3.2rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #831843;
-  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+.hero-badge,
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.76);
+  border: 1px solid rgba(255,255,255,0.8);
+  color: var(--pink-strong);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 18px;
 }
 
-.hero p {
-  font-size: 1.25rem;
-  margin-bottom: 30px;
-  color: #581c87;
-}
-
-/* ====================================
-   7. HERO LOGO WRAPPER
-==================================== */
 .hero-logo-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 28px;
   width: 100%;
-  margin: 0 auto 30px;
+  margin: 0 auto 28px;
 }
 
-/* ====================================
-   8. HERO LOGO
-==================================== */
 .hero-logo {
   width: 220px;
   height: 220px;
-  display: block;
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid rgba(255, 255, 255, 0.9);
+  border: 6px solid rgba(255,255,255,0.9);
   background: white;
   padding: 8px;
-  box-shadow: 0 0 30px rgba(255, 0, 200, 0.22);
-  flex-shrink: 0;
+  box-shadow:
+    0 0 0 8px rgba(255,255,255,0.18),
+    0 20px 50px rgba(219,39,119,0.25);
+  animation: floatY 4s ease-in-out infinite;
 }
 
-/* ====================================
-   9. NEON STRIPES
-==================================== */
 .neon-stripe {
   width: 150px;
   height: 8px;
   border-radius: 999px;
   background: linear-gradient(90deg, #ff00c8, #ff77e9, #ff00c8);
-  box-shadow:
-    0 0 10px #ff00c8,
-    0 0 20px #ff33d6,
-    0 0 35px #ff77e9;
+  box-shadow: 0 0 10px #ff00c8, 0 0 20px #ff33d6, 0 0 35px #ff77e9;
   animation: neonPulse 2s infinite alternate;
-  flex-shrink: 0;
 }
 
-/* ====================================
-   10. BUTTONS
-==================================== */
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: #7b184b;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: #5a3370;
+  max-width: 760px;
+  margin: 0 auto 32px;
+}
+
 .hero-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 14px;
 }
 
 .btn-primary,
 .btn-secondary {
   text-decoration: none;
   font-weight: 600;
-  border-radius: 30px;
-  padding: 12px 24px;
+  border-radius: 999px;
+  padding: 14px 24px;
   font-size: 1rem;
-  transition: all 0.3s ease;
-  display: inline-block;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ec4899, #f472b6);
+  background: linear-gradient(135deg, var(--pink), #f472b6);
   color: white;
-  box-shadow: 0 4px 10px rgba(236, 72, 153, 0.35);
+  box-shadow: 0 15px 28px rgba(236,72,153,0.28);
 }
 
-.btn-primary:hover {
-  background: linear-gradient(135deg, #db2777, #f472b6);
-  transform: translateY(-2px);
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-3px) scale(1.01);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.92);
-  color: #db2777;
-  border: 2px solid #f9a8d4;
+  background: rgba(255,255,255,0.88);
+  color: var(--pink-strong);
+  border: 1px solid rgba(255,255,255,0.9);
 }
 
-.btn-secondary:hover {
-  background: #fce7f3;
-  transform: translateY(-2px);
+.full-width {
+  width: 100%;
 }
 
-/* ====================================
-   11. GALLERY SECTION
-==================================== */
-.gallery-section {
+.hero-stats {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  border-radius: 22px;
+  padding: 18px;
+  text-align: left;
+}
+
+.stat-card strong {
+  display: block;
+  color: var(--purple-dark);
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.stat-card span {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+section,
+footer,
+main {
+  max-width: var(--container);
+  margin: 28px auto;
+}
+
+.section-heading {
   text-align: center;
-  padding: 50px 20px;
-  margin: 30px auto;
-  max-width: 1200px;
+  margin-bottom: 26px;
 }
 
-.gallery-section h2 {
-  font-size: 2rem;
-  color: #a21caf;
-  margin-bottom: 25px;
+.section-heading.centered-left {
+  text-align: left;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--purple-dark);
+  margin-bottom: 8px;
+}
+
+.section-heading p {
+  color: var(--text-soft);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.gallery-section,
+.services,
+.contact-section,
+.about,
+.price-card {
+  border-radius: var(--radius-lg);
+  padding: 40px 24px;
 }
 
 .gallery-container {
   position: relative;
-  width: 100%;
   overflow: hidden;
+  border-radius: 24px;
+  padding: 10px;
 }
 
 .gallery-wrapper {
   position: relative;
   width: 100%;
-  height: 70vh;
-  border-radius: 12px;
+  height: 72vh;
+  min-height: 380px;
+  border-radius: 20px;
   overflow: hidden;
 }
 
@@ -244,115 +447,97 @@ main {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transform: scale(1.04);
+  transition: opacity 0.8s ease, transform 5s ease;
 }
 
 .gallery-wrapper img.active {
   opacity: 1;
+  transform: scale(1);
   z-index: 2;
 }
 
-/* ====================================
-   12. GALLERY BUTTONS
-==================================== */
 .gallery-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.85);
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 15px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  color: #db2777;
-  transition: 0.3s;
-  z-index: 3;
+  border: 1px solid rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.78);
+  color: var(--pink-strong);
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 4;
+  transition: 0.3s ease;
 }
 
 .gallery-btn:hover {
-  background: #ec4899;
+  background: var(--pink);
   color: white;
 }
 
-.gallery-btn.prev {
-  left: 20px;
+.gallery-btn.prev { left: 24px; }
+.gallery-btn.next { right: 24px; }
+
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
 }
 
-.gallery-btn.next {
-  right: 20px;
+.gallery-dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(147,51,234,0.22);
+  cursor: pointer;
+  transition: 0.25s ease;
 }
 
-/* ====================================
-   13. ABOUT SECTION
-==================================== */
-.about {
-  max-width: 900px;
-  margin: 60px auto;
-  text-align: center;
-  padding: 40px 24px;
-}
-
-.about h2 {
-  font-size: 2rem;
-  color: #db2777;
-  margin-bottom: 15px;
+.gallery-dots button.active {
+  width: 30px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
 }
 
 .about p {
-  font-size: 1.05rem;
-  color: #444;
-}
-
-/* ====================================
-   14. SERVICES SECTION
-==================================== */
-.services {
+  max-width: 820px;
+  margin: 0 auto;
   text-align: center;
-  padding: 60px 20px;
-  margin: 30px auto;
-  max-width: 1200px;
-}
-
-.services h2 {
-  font-size: 2rem;
-  color: #7e22ce;
-  margin-bottom: 40px;
-  font-style: italic;
-  font-weight: 500;
+  font-size: 1.08rem;
+  color: var(--text-soft);
 }
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
 }
 
-/* ====================================
-   15. SERVICE CARD
-==================================== */
 .service-card {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid transparent;
+  border-radius: 22px;
+  min-height: 380px;
+  border: 1px solid rgba(255,255,255,0.32);
+  box-shadow: 0 16px 40px rgba(122, 56, 112, 0.14);
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .service-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-  border-color: #e11d48;
+  box-shadow: 0 20px 45px rgba(122, 56, 112, 0.22);
 }
 
 .service-card img {
   width: 100%;
-  height: 350px;
+  height: 100%;
+  min-height: 380px;
   object-fit: cover;
-  display: block;
   transition: transform 0.5s ease;
 }
 
@@ -360,213 +545,408 @@ main {
   transform: scale(1.08);
 }
 
-/* ====================================
-   16. SERVICE OVERLAY
-==================================== */
+.card-shine {
+  position: absolute;
+  inset: -120% auto auto -40%;
+  width: 55%;
+  height: 260%;
+  transform: rotate(25deg);
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.28), transparent);
+  transition: transform 0.7s ease;
+  z-index: 2;
+}
+
+.service-card:hover .card-shine {
+  transform: translateX(320%) rotate(25deg);
+}
+
 .overlay {
   position: absolute;
   inset: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.5);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  align-items: flex-end;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(44, 10, 57, 0.72), rgba(44,10,57,0.05));
+  z-index: 3;
 }
 
-.service-card:hover .overlay {
-  opacity: 1;
+.overlay div {
+  color: white;
 }
 
 .overlay h3 {
-  font-size: 1.4rem;
-  color: #991b1b;
-  border: 2px solid #991b1b;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 8px;
-  text-shadow: 0 1px 2px white;
+  font-size: 1.5rem;
+  margin-bottom: 6px;
 }
 
-/* ====================================
-   17. CONTACT SECTION
-==================================== */
-.contact-section {
-  padding: 50px 20px;
-  margin: 30px auto;
-  max-width: 1200px;
-}
-
-.contact-section h2 {
-  text-align: center;
-  color: #7e22ce;
-  margin-bottom: 30px;
-  font-size: 1.8rem;
+.overlay p {
+  opacity: 0.92;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-/* ====================================
-   18. CONTACT INFO
-==================================== */
-.contact-info h3 {
-  color: #6d28d9;
-  margin-bottom: 10px;
+.contact-panel {
+  border-radius: 24px;
+  padding: 24px;
 }
 
-.contact-info h4 {
-  color: #6d28d9;
-  margin-top: 20px;
-  margin-bottom: 10px;
+.contact-info h3,
+.contact-info h4,
+.contact-map h4,
+.contact-social h4 {
+  color: var(--purple-dark);
+  margin-bottom: 12px;
 }
 
 .contact-info p,
-.contact-info a {
-  color: #333;
-  font-size: 1rem;
-  line-height: 1.6;
+.contact-info a,
+.contact-social p {
+  color: var(--text-soft);
   text-decoration: none;
 }
 
-.contact-info a:hover {
-  color: #7e22ce;
+.contact-info p {
+  margin-bottom: 10px;
 }
 
 .contact-info i {
-  color: #7e22ce;
+  color: var(--pink-strong);
   margin-right: 8px;
 }
 
 .hours {
   list-style: none;
-  margin-top: 10px;
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
 }
 
 .hours li {
-  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.48);
 }
 
-/* ====================================
-   19. CONTACT MAP
-==================================== */
 .contact-map iframe {
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 }
 
-/* ====================================
-   20. CONTACT SOCIAL
-==================================== */
 .contact-social {
   text-align: center;
-}
-
-.contact-social h4 {
-  color: #6d28d9;
-  margin-bottom: 10px;
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 14px;
+  margin-top: 18px;
   flex-wrap: wrap;
 }
 
 .social-icons a {
-  color: #7e22ce;
-  font-size: 1.6rem;
-  transition: 0.2s;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
   text-decoration: none;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.82);
+  color: var(--purple-dark);
+  box-shadow: 0 10px 20px rgba(147,51,234,0.14);
+  transition: 0.25s ease;
 }
 
 .social-icons a:hover {
-  color: #581c87;
+  transform: translateY(-4px) scale(1.06);
+  color: white;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
 }
 
-/* ====================================
-   21. FOOTER
-==================================== */
+.price-page,
+.booking-page {
+  padding: 0 0 12px;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.price-category {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 22px;
+  padding: 22px;
+}
+
+.price-category h2 {
+  font-size: 1.25rem;
+  color: var(--pink-strong);
+  margin-bottom: 16px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(124, 58, 237, 0.22);
+}
+
+.price-row:last-child {
+  border-bottom: none;
+}
+
+.service-name {
+  color: var(--text-soft);
+}
+
+.service-price {
+  font-weight: 700;
+  color: var(--purple-dark);
+  white-space: nowrap;
+}
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 24px;
+}
+
+.booking-panel {
+  border-radius: 28px;
+  padding: 24px;
+}
+
+.calendar-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.day {
+  padding: 18px;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.42);
+  border-radius: 20px;
+}
+
+.day h3 {
+  color: var(--purple-dark);
+  margin-bottom: 12px;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.slot-btn {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  color: var(--purple-dark);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.slot-btn:hover {
+  transform: translateY(-2px);
+  background: #fdf2f8;
+}
+
+.slot-btn.selected {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: white;
+  box-shadow: 0 12px 20px rgba(219,39,119,0.24);
+}
+
+.slot-btn.closed {
+  background: rgba(148,163,184,0.3);
+  color: rgba(71,85,105,0.65);
+  text-decoration: line-through;
+}
+
+.booking-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--purple-dark);
+}
+
+.form-group input,
+.form-group select,
+.booking-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.84);
+  border-radius: 16px;
+  padding: 14px 16px;
+  font: inherit;
+  color: var(--text);
+  outline: none;
+  transition: 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: rgba(236,72,153,0.55);
+  box-shadow: 0 0 0 4px rgba(236,72,153,0.12);
+}
+
+.booking-summary {
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(252,231,243,0.85), rgba(243,232,255,0.85));
+  color: var(--purple-dark);
+  font-weight: 500;
+}
+
+.confirmation-message {
+  min-height: 26px;
+  font-weight: 600;
+}
+
 footer {
   text-align: center;
-  background: rgba(76, 29, 149, 0.95);
+  background: rgba(76, 29, 149, 0.9);
   color: white;
-  padding: 15px 10px;
-  font-size: 0.9rem;
-  margin-top: 30px;
+  padding: 20px 14px;
+  border-radius: 22px;
+  margin-bottom: 24px;
 }
 
 footer a {
-  color: #c4b5fd;
+  color: #ddd6fe;
   text-decoration: none;
 }
 
 footer a:hover {
-  color: white;
   text-decoration: underline;
 }
 
-/* ====================================
-   22. RESPONSIVE TABLET
-==================================== */
-@media (max-width: 768px) {
-  .hero {
-    padding: 90px 20px 70px;
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes neonPulse {
+  from { opacity: 0.7; filter: brightness(1); }
+  to { opacity: 1; filter: brightness(1.4); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.12); }
+}
+
+@media (max-width: 1080px) {
+  .service-grid,
+  .contact-grid,
+  .price-grid,
+  .booking-layout {
+    grid-template-columns: 1fr;
   }
 
-  .hero h1 {
-    font-size: 2.4rem;
-  }
-
-  .hero-logo-wrapper {
-    gap: 16px;
-  }
-
-  .hero-logo {
-    width: 170px;
-    height: 170px;
-  }
-
-  .neon-stripe {
-    width: 80px;
-    height: 6px;
-  }
-
-  .gallery-wrapper {
-    height: 50vh;
-  }
-
-  .gallery-btn {
-    font-size: 1.5rem;
-    padding: 10px;
-  }
-
-  .service-card img {
-    height: 300px;
+  .hero-stats {
+    grid-template-columns: 1fr;
   }
 }
 
-/* ====================================
-   23. RESPONSIVE MOBILE
-==================================== */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .topbar {
+    border-radius: 24px;
+    top: 10px;
+    margin: 10px 12px 0;
+    padding: 14px 16px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 90px;
+    left: 12px;
+    right: 12px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(14px);
+    padding: 18px;
+    border-radius: 22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    z-index: 999;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.66);
+  }
+
+  .hero,
+  .gallery-section,
+  .services,
+  .contact-section,
+  .about,
+  .price-card,
+  .booking-panel,
+  footer {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
   .hero {
-    padding: 80px 20px 60px;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
+    padding: 88px 18px 72px;
   }
 
   .hero-logo-wrapper {
@@ -575,38 +955,43 @@ footer a:hover {
   }
 
   .hero-logo {
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
   }
 
   .neon-stripe {
     width: 100px;
-    height: 6px;
   }
 
-  .contact-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .gallery-wrapper {
+    height: 52vh;
+    min-height: 280px;
   }
 
-  .contact-info,
-  .contact-map,
-  .contact-social {
-    margin-bottom: 20px;
-  }
-
-  .service-card img {
-    height: 280px;
+  .gallery-btn {
+    width: 46px;
+    height: 46px;
+    font-size: 1.3rem;
   }
 }
 
-/* ====================================
-   24. SMALL MOBILE
-==================================== */
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+  .brand span {
+    font-size: 0.92rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
   .btn-primary,
   .btn-secondary {
     width: 100%;
-    text-align: center;
+  }
+
+  .hours li,
+  .price-row {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
