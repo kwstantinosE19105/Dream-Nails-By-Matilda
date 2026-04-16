@@ -5,19 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dream Nails By Matilda</title>
 
-  <link rel="icon" type="image/jpeg" href="Logo.jpeg">
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Font Awesome -->
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="home">
 
-  <!-- ====================================
-       HERO SECTION
-  ==================================== -->
-  <header class="hero">
+  <div class="cursor-glow"></div>
+  <div class="background-blobs">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="background-overlay"></div>
+  <div class="scroll-progress"></div>
+
+  <nav class="topbar">
+    <a href="index.html" class="brand">
+      <img src="images/logo.jpg" alt="Dream Nails logo">
+      <span>Dream Nails By Matilda</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#about">Σχετικά</a>
+      <a href="#services">Υπηρεσίες</a>
+      <a href="#contact">Επικοινωνία</a>
+      <a href="price-list.html">Τιμοκατάλογος</a>
+      <a href="book-appointment.html" class="nav-cta">Ραντεβού</a>
+    </div>
+
+    <button class="menu-toggle" aria-label="Άνοιγμα μενού">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="#about">Σχετικά</a>
+    <a href="#services">Υπηρεσίες</a>
+    <a href="#contact">Επικοινωνία</a>
+    <a href="price-list.html">Τιμοκατάλογος</a>
+    <a href="book-appointment.html">Κλείστε Ραντεβού</a>
+  </div>
+
+  <header class="hero reveal">
     <div class="hero-content">
+      <div class="hero-badge">Luxury Nail Studio in Argiroupoli</div>
 
       <div class="hero-logo-wrapper">
         <div class="neon-stripe"></div>
@@ -26,86 +61,122 @@
       </div>
 
       <h1>💅 Dream Nails By Matilda</h1>
-      <p>Η ομορφιά ξεκινά από τα άκρα — φροντίστε τα χέρια και τα πόδια σας με αγάπη!</p>
+      <p>
+        Η ομορφιά ξεκινά από τα άκρα — αναδείξτε το στυλ σας με μοναδικό μανικιούρ,
+        πεντικιούρ και premium περιποίηση σε έναν χώρο γεμάτο λάμψη.
+      </p>
 
       <div class="hero-buttons">
         <a href="book-appointment.html" class="btn-primary">📅 Κλείστε Ραντεβού</a>
         <a href="price-list.html" class="btn-secondary">💖 Δείτε Τιμοκατάλογο</a>
       </div>
+
+      <div class="hero-stats">
+        <div class="stat-card glass-card">
+          <strong>Premium</strong>
+          <span>Υπηρεσίες ονυχοπλαστικής</span>
+        </div>
+        <div class="stat-card glass-card">
+          <strong>Glow</strong>
+          <span>Μοντέρνος και χαλαρωτικός χώρος</span>
+        </div>
+        <div class="stat-card glass-card">
+          <strong>Style</strong>
+          <span>Designs που ξεχωρίζουν</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- ====================================
-       GALLERY SECTION
-  ==================================== -->
-  <section class="gallery-section">
-    <h2>📸 Το Σαλόνι Μας</h2>
+  <section class="gallery-section reveal">
+    <div class="section-heading">
+      <span class="section-tag">Gallery</span>
+      <h2>📸 Το Σαλόνι Μας</h2>
+      <p>Μια ματιά στον χώρο και το αισθητικό μας αποτέλεσμα.</p>
+    </div>
 
-    <div class="gallery-container">
-      <button class="gallery-btn prev">&#10094;</button>
+    <div class="gallery-container glass-card">
+      <button class="gallery-btn prev" aria-label="Προηγούμενη εικόνα">&#10094;</button>
 
-      <div class="gallery-wrapper">
+      <div class="gallery-wrapper" id="gallery">
         <img src="images/salloon.jpg" alt="Salon 1" class="active">
-        <img src="images/nails 4.jpg" alt="Salon 2">
-        <img src="images/nails 5.jpg" alt="Salon 3">
-        <img src="images/nails 6.jpg" alt="Salon 4">
-        <img src="images/nails 7.jpg" alt="Salon 5">
+        <img src="images/nails 4.jpg" alt="Nail design 1">
+        <img src="images/nails 5.jpg" alt="Nail design 2">
+        <img src="images/nails 6.jpg" alt="Nail design 3">
+        <img src="images/nails 7.jpg" alt="Nail design 4">
       </div>
 
-      <button class="gallery-btn next">&#10095;</button>
+      <button class="gallery-btn next" aria-label="Επόμενη εικόνα">&#10095;</button>
     </div>
+
+    <div class="gallery-dots" id="galleryDots"></div>
   </section>
 
-  <!-- ====================================
-       ABOUT SECTION
-  ==================================== -->
-  <section class="about">
-    <h2>Σχετικά με εμάς</h2>
+  <section class="about reveal" id="about">
+    <div class="section-heading">
+      <span class="section-tag">About us</span>
+      <h2>Σχετικά με εμάς</h2>
+    </div>
+
     <p>
       Στο Dream Nails By Matilda συνδυάζουμε επαγγελματισμό, στυλ και φροντίδα.
-      Προσφέρουμε υπηρεσίες μανικιούρ, πεντικιούρ, nail art και αισθητικής,
-      σε έναν άνετο και χαλαρωτικό χώρο για κάθε στιγμή της ημέρας.
+      Προσφέρουμε υπηρεσίες μανικιούρ, πεντικιούρ, nail art και αισθητικής
+      σε έναν άνετο, κομψό και χαλαρωτικό χώρο για κάθε στιγμή της ημέρας.
     </p>
   </section>
 
-  <!-- ====================================
-       SERVICES SECTION
-  ==================================== -->
-  <section class="services">
-    <h2>Υπηρεσίες μας</h2>
+  <section class="services reveal" id="services">
+    <div class="section-heading">
+      <span class="section-tag">Services</span>
+      <h2>Υπηρεσίες μας</h2>
+      <p>Αναδείξτε το προσωπικό σας στυλ με προσεγμένες τεχνικές και μοντέρνα αισθητική.</p>
+    </div>
 
     <div class="service-grid">
-      <div class="service-card">
-        <img src="images/nails 2.jpg" alt="Acrylic">
+      <article class="service-card premium-card tilt-card">
+        <div class="card-shine"></div>
+        <img src="images/nails 2.jpg" alt="Acrylic nails">
         <div class="overlay">
-          <h3>Acrylic</h3>
+          <div>
+            <h3>Acrylic / Gel</h3>
+            <p>Ενίσχυση, τοποθέτηση και συντήρηση με premium αποτέλεσμα.</p>
+          </div>
         </div>
-      </div>
+      </article>
 
-      <div class="service-card">
+      <article class="service-card premium-card tilt-card">
+        <div class="card-shine"></div>
         <img src="images/podia.jfif" alt="Πεντικιούρ">
         <div class="overlay">
-          <h3>Πεντικιούρ</h3>
+          <div>
+            <h3>Πεντικιούρ</h3>
+            <p>Θεραπεία, περιποίηση και άνεση για τέλεια πόδια.</p>
+          </div>
         </div>
-      </div>
+      </article>
 
-      <div class="service-card">
+      <article class="service-card premium-card tilt-card">
+        <div class="card-shine"></div>
         <img src="images/nails 3.jpg" alt="Μανικιούρ">
         <div class="overlay">
-          <h3>Μανικιούρ</h3>
+          <div>
+            <h3>Μανικιούρ</h3>
+            <p>Elegant, clean και λαμπερό αποτέλεσμα για κάθε περίσταση.</p>
+          </div>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
-  <!-- ====================================
-       CONTACT SECTION
-  ==================================== -->
-  <section class="contact-section">
-    <h2>📞 Στοιχεία Επικοινωνίας</h2>
+  <section class="contact-section reveal" id="contact">
+    <div class="section-heading">
+      <span class="section-tag">Contact</span>
+      <h2>📞 Στοιχεία Επικοινωνίας</h2>
+      <p>Επικοινωνήστε μαζί μας και ακολουθήστε μας στα social.</p>
+    </div>
 
     <div class="contact-grid">
-      <div class="contact-info">
+      <div class="contact-info glass-card contact-panel">
         <h3>Κέντρο Ονυχοπλαστικής Dream Nails By Matilda</h3>
         <p><i class="fa-solid fa-location-dot"></i> Κρήτης 8, Αργυρούπολη 164 51, Greece</p>
         <p><i class="fa-solid fa-phone"></i> <a href="tel:+302128101011">+30 2128101011</a></p>
@@ -113,22 +184,22 @@
 
         <h4>🕒 Ώρες Λειτουργίας</h4>
         <ul class="hours">
-          <li>Δευτέρα: 09:00 - 16:00</li>
-          <li>Τρίτη: 09:00 - 16:00</li>
-          <li>Τετάρτη: 09:00 - 16:00</li>
-          <li>Πέμπτη: 09:00 - 16:00</li>
-          <li>Παρασκευή: 10:00 - 20:00</li>
-          <li>Σάββατο: 09:00 - 18:00</li>
-          <li>Κυριακή: Κλειστά</li>
+          <li><span>Δευτέρα</span><strong>09:00 - 16:00</strong></li>
+          <li><span>Τρίτη</span><strong>09:00 - 16:00</strong></li>
+          <li><span>Τετάρτη</span><strong>09:00 - 16:00</strong></li>
+          <li><span>Πέμπτη</span><strong>09:00 - 16:00</strong></li>
+          <li><span>Παρασκευή</span><strong>10:00 - 20:00</strong></li>
+          <li><span>Σάββατο</span><strong>09:00 - 18:00</strong></li>
+          <li><span>Κυριακή</span><strong>Κλειστά</strong></li>
         </ul>
       </div>
 
-      <div class="contact-map">
+      <div class="contact-map glass-card contact-panel">
         <h4>📍 Χάρτης</h4>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.2743868473044!2d23.74386417856561!3d37.91603400123262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bded43dbfab9%3A0x55458a15ddd15a8a!2sKritis%208%2C%20Argiroupoli%20164%2051!5e0!3m2!1sel!2sgr!4v1731111111111!5m2!1sel!2sgr"
           width="100%"
-          height="250"
+          height="280"
           style="border:0;"
           allowfullscreen=""
           loading="lazy"
@@ -136,31 +207,27 @@
         </iframe>
       </div>
 
-      <div class="contact-social">
+      <div class="contact-social glass-card contact-panel">
         <h4>📲 Ακολουθήστε μας</h4>
+        <p>Μείνετε συντονισμένοι για νέα σχέδια, προσφορές και έμπνευση.</p>
         <div class="social-icons">
-          <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-          <a href="https://www.instagram.com/dream_nails_by_matilda_" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://wa.me/302101234567" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="mailto:info@glamournails.gr"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/dream_nails_by_matilda_" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/302128101011" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:dreamnailsbymatilda25@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====================================
-       FOOTER
-  ==================================== -->
-  <footer>
-    <p>© 2025 Dream Nails By Matilda. Όλα τα δικαιώματα διατηρούνται.</p>
+  <footer class="reveal">
+    <p>© 2026 Dream Nails By Matilda. Όλα τα δικαιώματα διατηρούνται.</p>
     <p>
-      Κατασκευή Ιστοσελίδας από <a href="#">Dream Nails</a> |
+      Κατασκευή Ιστοσελίδας από <a href="index.html">Dream Nails</a> |
       <a href="#">Όροι Χρήσης</a> |
       <a href="#">Πολιτική Απορρήτου</a>
     </p>
   </footer>
-
-  <div class="background-overlay"></div>
 
   <script src="script.js"></script>
 </body>
